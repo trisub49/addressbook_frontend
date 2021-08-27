@@ -1,28 +1,29 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <v-app class="appmain">
+    <v-container fluid>
+      <router-link class="menuelement px-3" to="/">Kategóriák</router-link>
+      <router-link class="menuelement px-3" to="/persons">Címzettek</router-link>
+    </v-container>
+    <v-main>
+      <router-view />
+    </v-main>
+  </v-app>
 </template>
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
-
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
-</script>
-
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+.appmain {
+  background-color: lightgrey;
+}
+.title {
+  font-family: 'Bebas Neue', cursive;
+}
+.menuelement {
+  text-decoration: none;
+  color: black !important;
+  font-weight: bold;
+}
+.v-btn {
+  text-transform: unset !important;
 }
 </style>
