@@ -26,7 +26,7 @@
               label="Email cím" 
             />
             <v-text-field 
-              v-model="phoneNumber"
+              v-model="phone_number"
               outlined dense 
               required 
               label="Telefonszám" 
@@ -84,7 +84,7 @@ export default {
     return {
       name: '',
       email: '',
-      phoneNumber: '',
+      phone_number: '',
       categories: [],
       nextCategory: ''
     }
@@ -94,7 +94,7 @@ export default {
       axios.post(`${process.env.VUE_APP_API}/person`, {
         name: this.name,
         email: this.email,
-        phoneNumber: this.phoneNumber,
+        phone_number: this.phone_number,
         categories: this.categories
       })
       .then(response => {

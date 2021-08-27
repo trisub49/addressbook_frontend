@@ -18,13 +18,13 @@
           <td class="identifier">{{person.id}}</td>
           <td class="name">{{person.name}}</td>
           <td class="email">{{person.email}}</td>
-          <td class="phone">{{person.phoneNumber}}</td>
+          <td class="phone">{{person.phone_number}}</td>
           <td class="categories">
             <span v-for="category in person.categories" :key="category">
               {{category}}
             </span>
           </td>
-          <td class="date">{{person.date}}</td>
+          <td class="date">{{person.created_date}}</td>
           <td class="actions">
             <EditPerson :person="person"/>
             <v-btn icon color="red" @click="deletePerson(person.id)">
@@ -72,10 +72,7 @@ export default {
   },
   data() {
     return {
-      persons: [
-        {id: 0, name: "elsőkat", email: 'asf', phoneNumber: 'asdf', categories: ['láma', 'birka'], date: '2021-08-28'},
-        {id: 1, name: 'másodkat', email: 'asf', phoneNumber: 'asdf', categories: ['tyúk', 'liba'], date: '2021-08-27'}
-      ]
+      persons: [ ]
     }
   },
   created() {
@@ -85,7 +82,13 @@ export default {
   },
   methods: {
     deletePerson(id) {
-      this.persons = this.persons.filter(p => p.id != id);
+      axios.delete(`${process.env.VUE_APP_API}/person/${id}`)
+      .then(response => {
+        if(response.status == 200) {
+          this.persons = this.persons.filter(p => p.id != id);
+        }
+      })
+      .catch(error => alert(error));
     }
   }
 }

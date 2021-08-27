@@ -42,6 +42,7 @@ export default {
   methods: {
     submitForm() {
       axios.post(`${process.env.VUE_APP_API}/category`, {
+        id: 0,
         name: this.categoryName
       })
       .then(response => {

@@ -25,7 +25,7 @@
               label="Email cím" 
             />
             <v-text-field 
-              v-model="loadedPerson.phoneNumber"
+              v-model="loadedPerson.phone_number"
               outlined dense 
               required 
               label="Telefonszám" 
@@ -83,7 +83,7 @@ export default {
   data() {
     return {
       nextCategory: '',
-      loadedPerson: this.person
+      loadedPerson: Object.assign({}, this.person)
     }
   },
   methods: {
@@ -91,14 +91,15 @@ export default {
       axios.put(`${process.env.VUE_APP_API}/person/${this.loadedPerson.id}`, {
         name: this.loadedPerson.name,
         email: this.loadedPerson.email,
-        phoneNumber: this.loadedPerson.phoneNumber,
+        phone_number: this.loadedPerson.phone_number,
         categories: this.loadedPerson.categories
       })
       .then(response => {
         if(response.status == 200) {
-          window.location.reload();
+         this.person = this.loadedPerson;
         }
-      });
+      })
+      .catch(error => console.log(error.response));
     },
     addCategory() {
       this.loadedPerson.categories.push(this.nextCategory);
