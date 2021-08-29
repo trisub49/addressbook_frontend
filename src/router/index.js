@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Categories from '../views/Categories.vue'
-import Persons from '../views/Persons.vue'
+import People from '../views/People.vue'
 
 Vue.use(VueRouter)
 
@@ -12,9 +12,9 @@ const routes = [
     component: Categories
   },
   {
-    path: '/persons',
-    name: 'Persons',
-    component: Persons
+    path: '/people',
+    name: 'People',
+    component: People
   }
 ]
 

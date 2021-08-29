@@ -1,8 +1,8 @@
 <template>
-  <v-app class="appmain">
+  <v-app>
     <v-container fluid>
       <router-link class="menuelement px-3" to="/">Kategóriák</router-link>
-      <router-link class="menuelement px-3" to="/persons">Címzettek</router-link>
+      <router-link class="menuelement px-3" to="/people">Címzettek</router-link>
     </v-container>
     <v-main>
       <router-view />
@@ -11,17 +11,11 @@
 </template>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
-.appmain {
-  background-color: lightgrey;
-}
-.title {
-  font-family: 'Bebas Neue', cursive;
-}
 .menuelement {
+  text-align: right;
   text-decoration: none;
   color: black !important;
-  font-weight: bold;
+  font-size: large;
 }
 .v-btn {
   text-transform: unset !important;
